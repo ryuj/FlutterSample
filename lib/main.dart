@@ -22,10 +22,67 @@ class MyApp extends StatelessWidget {
         // is not restarted.
         primarySwatch: Colors.blue,
       ),
-      home: MyHomePage(title: 'Flutter Demo Home Page'),
+      // home: MyHomePage(title: 'Flutter Demo Home Page'),
+      home: MyHomePage2(),
     );
   }
 }
+
+class MyHomePage2 extends StatelessWidget {
+  @override
+  Widget build(BuildContext context) {
+    return Scaffold(
+      appBar: AppBar(title: Text("ほげほげ")),
+      body: myGridView(),
+    );
+  }
+
+  Widget myGridView() {
+    return Container(
+      // GridViewはウィジェットをグリッドで表示してくれるウィジェット
+      // iOS UIKitで言うところの UICollectionView
+      // GridView.builderというfactory(カスタムコンストラクタ)で初期化する
+      child: GridView.builder(
+          gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
+            // グリッド横方向のウィジェット数
+            crossAxisCount: 2,
+            crossAxisSpacing: 16,
+            mainAxisSpacing: 16,
+            // グリッド表示するウィジェットの縦横比
+            childAspectRatio: 0.7,
+          ),
+          // グリッドに表示したいウィジェットの数
+          itemCount: 6,
+          // itemBuilderはGridViewのインデックス毎に表示したいウィジェットを返すデリゲート
+          // context, indexを引数にとり、ウィジェットを返す関数を指定してやる
+          // itemContの回数だけ呼ばれる、この例では6回
+          itemBuilder: (context, index) {
+            return ElevatedButton(
+              child: Image.network(
+                  "https://1.bp.blogspot.com/-VthzAuEo8fc/X96mhYv33UI/AAAAAAABdBs/HXCc0J0WsHUMSuQ00UZ5UuLPUXatMIq-wCNcBGAsYHQ/s831/onepiece01_luffy2.png"),
+              style: ButtonStyle(
+                foregroundColor: MaterialStateProperty.all<Color>(Colors.red),
+                overlayColor: MaterialStateProperty.all<Color>(Colors.green),
+                backgroundColor: MaterialStateProperty.all<Color>(Colors.blue),
+                shadowColor: MaterialStateProperty.all<Color>(Colors.yellow),
+              ),
+              onPressed: () {
+                debugPrint("yes");
+              },
+            );
+            // とりあえずグレーのコンテナを表示してみる
+            // return Container(
+            //   color: Colors.grey,
+            //   margin: EdgeInsets.all(16),
+            // );
+          }),
+    );
+  }
+}
+
+//
+// あとで消す
+//
 
 class MyHomePage extends StatefulWidget {
   MyHomePage({Key? key, required this.title}) : super(key: key);
