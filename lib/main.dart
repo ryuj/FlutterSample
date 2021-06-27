@@ -38,6 +38,19 @@ class MyHomePage2 extends StatelessWidget {
   }
 
   Widget myGridView() {
+    // いらすとや画像をお借りする
+    var imageUrlary = [
+      "https://1.bp.blogspot.com/-VthzAuEo8fc/X96mhYv33UI/AAAAAAABdBs/HXCc0J0WsHUMSuQ00UZ5UuLPUXatMIq-wCNcBGAsYHQ/s831/onepiece01_luffy2.png",
+      "https://1.bp.blogspot.com/-rzRcgoXDqEg/YAOTCKoCpPI/AAAAAAABdOI/5Bl3_zhOxm07TUGzW8_83cXMOT9yy1VJwCNcBGAsYHQ/s1041/onepiece02_zoro_bandana.png",
+      "https://1.bp.blogspot.com/-2ut_UQv3iss/X-Fcs_0oAII/AAAAAAABdD8/jrCZTd_xK-Y6CP1KwOtT_LpEpjp-1nvxgCNcBGAsYHQ/s1055/onepiece03_nami.png",
+      "https://1.bp.blogspot.com/-mZpzgXC1Sxk/YAOTCAKwWTI/AAAAAAABdOM/5B4hXli0KLU5N-BySHgjVbhZscKLSE-bQCNcBGAsYHQ/s1025/onepiece04_usopp_sogeking.png",
+      "https://1.bp.blogspot.com/-HPG_x7XPky8/X-FctLTLkKI/AAAAAAABdEE/xs4T8m0FiBAFptXHGQhQ2c9ZmVWtaeQSgCNcBGAsYHQ/s1028/onepiece05_sanji.png",
+      "https://1.bp.blogspot.com/--9Rl2O4BBN0/X-Fct8K5mqI/AAAAAAABdEI/yLOziAqJO34fwn73AolVP0e42A2h-ql1QCNcBGAsYHQ/s992/onepiece06_chopper.png",
+      "https://1.bp.blogspot.com/-JiNpsjnPn7g/X-FcuWcU37I/AAAAAAABdEQ/P5r3wBMTRegjl7njCk4zWBkdoay44-T2gCNcBGAsYHQ/s1151/onepiece07_robin.png",
+      "https://1.bp.blogspot.com/-H8YBA_SpxGs/X-Fcu75hh_I/AAAAAAABdEU/WRKUa03ypYor3TwvhziHAnSEcTN4Noq0gCNcBGAsYHQ/s1148/onepiece08_franky.png",
+      "https://1.bp.blogspot.com/-KZ0MJgiPJHo/X__CLeY-zVI/AAAAAAABdNM/HnFYqUe0VQEzCWCqyMggibpk4kBRtFCpQCNcBGAsYHQ/s1102/onepiece09_brook.png"
+    ];
+
     return Container(
       // GridViewはウィジェットをグリッドで表示してくれるウィジェット
       // iOS UIKitで言うところの UICollectionView
@@ -51,15 +64,13 @@ class MyHomePage2 extends StatelessWidget {
             // グリッド表示するウィジェットの縦横比
             childAspectRatio: 0.7,
           ),
-          // グリッドに表示したいウィジェットの数
-          itemCount: 6,
+          itemCount: imageUrlary.length,
           // itemBuilderはGridViewのインデックス毎に表示したいウィジェットを返すデリゲート
           // context, indexを引数にとり、ウィジェットを返す関数を指定してやる
-          // itemContの回数だけ呼ばれる、この例では6回
+          // itemContの回数だけ呼ばれる
           itemBuilder: (context, index) {
             return ElevatedButton(
-              child: Image.network(
-                  "https://1.bp.blogspot.com/-VthzAuEo8fc/X96mhYv33UI/AAAAAAABdBs/HXCc0J0WsHUMSuQ00UZ5UuLPUXatMIq-wCNcBGAsYHQ/s831/onepiece01_luffy2.png"),
+              child: Image.network(imageUrlary[index]),
               style: ButtonStyle(
                 foregroundColor: MaterialStateProperty.all<Color>(Colors.red),
                 overlayColor: MaterialStateProperty.all<Color>(Colors.green),
@@ -67,7 +78,7 @@ class MyHomePage2 extends StatelessWidget {
                 shadowColor: MaterialStateProperty.all<Color>(Colors.yellow),
               ),
               onPressed: () {
-                debugPrint("yes");
+                debugPrint(index.toString());
               },
             );
             // とりあえずグレーのコンテナを表示してみる
