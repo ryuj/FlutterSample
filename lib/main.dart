@@ -34,6 +34,19 @@ class MyHomePage2 extends StatelessWidget {
     return Scaffold(
       appBar: AppBar(title: Text("ほげほげ")),
       body: myGridView(),
+      bottomNavigationBar: BottomNavigationBar(
+        items: [
+          BottomNavigationBarItem(icon: Icon(Icons.home), label: "ホーム"),
+          BottomNavigationBarItem(icon: Icon(Icons.search), label: "検索"),
+          BottomNavigationBarItem(icon: Icon(Icons.circle), label: "ライブ"),
+          BottomNavigationBarItem(icon: Icon(Icons.flag), label: "イベント"),
+          BottomNavigationBarItem(icon: Icon(Icons.person), label: "マイページ"),
+        ],
+        selectedItemColor: Colors.black,
+        unselectedItemColor: Colors.grey,
+        // TODO: タブバーの見た目更新が必要
+        onTap: (value) => {debugPrint(value.toString())},
+      ),
     );
   }
 
@@ -51,6 +64,7 @@ class MyHomePage2 extends StatelessWidget {
       "https://1.bp.blogspot.com/-KZ0MJgiPJHo/X__CLeY-zVI/AAAAAAABdNM/HnFYqUe0VQEzCWCqyMggibpk4kBRtFCpQCNcBGAsYHQ/s1102/onepiece09_brook.png"
     ];
 
+    // 参考：https://tech.pepabo.com/2020/05/27/flutter-hands-on/
     return Container(
       // GridViewはウィジェットをグリッドで表示してくれるウィジェット
       // iOS UIKitで言うところの UICollectionView
